@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+  <link rel="stylesheet" href="../CSS/style.css" />
+</head>
+<body>
+<nav>
+    <ul>
+      <img class="Logo" src="Logo-wit.png" alt="Logo" height="150" width="150" />
+      <li><a class="nav-link" href="../HTML/Homepage.html" data-i18n="nav.home">Home</a></li>
+      <li><a class="nav-link" href="../HTML/aboutme.html" data-i18n="nav.home">About me</a></li>
+      <li><a class="nav-link" href="../HTML/projecten.html" data-i18n="nav.projects">My Previous Projects</a></li>
+      <li><a class="nav-link" href="../HTML/contact.html" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+  </nav>
+
+    <h1>Contact</h1>
+
+    <p class="contact">You can find me on the following platforms:</p>
+<a href="https://github.com/RichardWasNotAvailable">GitHub</a>
+<br>
+<br>
+<br>
+<form action="https://formspree.io/f/mldnwlan" method="POST">
+  <div class="input-group">
+    <input type="email" name="email" id="Email" required>
+    <label for="Email">Your Email</label>
+  </div>
+  
+  <div class="input-group">
+    <textarea name="message" id="Message" rows="8" required></textarea>
+    <label for="Message">Message</label>
+  </div>
+
+  <!-- Optional Hidden Fields -->
+  <input type="hidden" name="_next" value="https://yourdomain.com/thanks.html">
+  <input type="hidden" name="_captcha" value="false">
+
+  <button type="submit">Send</button>
+</form>
+
+
+</body>
+</html>
