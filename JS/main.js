@@ -33,8 +33,11 @@ cookieTitle: "Cookie Clicker",
 cookieDesc: "A school project cookie clicker game made in 10 weeks with a classmate.",
 
 churpifyTitle: "Churpify: The Twitter Clone",
-churpifyDesc: "A group project MVC website based on an old Twitter clone for learning purposes."
+churpifyDesc: "A group project MVC website based on an old Twitter clone for learning purposes.",
 
+PortfolioDesc: "The website you are currently on is also one of my projects, the website was written using HTML, TailwindCSS and JavaScript.",
+
+BadWebsiteDesc: "This website was part of a school project to make the worst website ever in 2 days time, with lots of ads, and overall just really bad."
 
     
   },
@@ -69,7 +72,10 @@ cookieTitle: "Cookie Clicker",
 cookieDesc: "Een schoolproject: een cookie clicker game gemaakt in 10 weken met een klasgenoot.",
 
 churpifyTitle: "Churpify: De Twitter-kloon",
-churpifyDesc: "Een groepsproject MVC-website gebaseerd op een oude Twitter-kloon."
+churpifyDesc: "Een groepsproject MVC-website gebaseerd op een oude Twitter-kloon.",
+
+PortfolioDesc: "De website waar je je nu op is ook 1 van mijn projecten, de website is geschreven door middel van HTML,TailwindCSS en Javascript.",
+BadWebsiteDesc: "Deze Website is gemaakt als schoolproject zijnde, met een gebruikerservaring die juist NIET goed is, dit project moest in 2 dagen gemaakt worden."
 
   },
 
@@ -103,7 +109,10 @@ cookieTitle: "Cookie Clicker",
 cookieDesc: "Ein Schulprojekt: ein Cookie-Clicker-Spiel, das in 10 Wochen mit einem Mitschüler erstellt wurde.",
 
 churpifyTitle: "Churpify: Der Twitter-Klon",
-churpifyDesc: "Ein Gruppenprojekt (MVC-Website) basierend auf einem alten Twitter-Klon."
+churpifyDesc: "Ein Gruppenprojekt (MVC-Website) basierend auf einem alten Twitter-Klon.",
+
+PortfolioDesc: "Die Website, auf der Sie sich gerade befinden, ist ebenfalls eines meiner Projekte. Die Website wurde mit HTML, TailwindCSS und JavaScript erstellt.",
+BadWebsiteDesc: "Diese Website entstand im Rahmen eines Schulprojekts, bei dem es darum ging, innerhalb von zwei Tagen die schlechteste Website aller Zeiten zu erstellen – mit vielen Werbeanzeigen und insgesamt einfach nur richtig schlecht."
 
   }
 };
