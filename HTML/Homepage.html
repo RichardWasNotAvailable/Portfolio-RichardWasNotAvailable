@@ -3,56 +3,120 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-i18n="title">Home</title>
+  <title>Home</title>
+
   <link rel="stylesheet" href="../CSS/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- MAIN JS -->
+  <script src="../JS/main.js" defer></script>
 </head>
 
-<body>
-<nav>
-    <ul>
-      <img class="Logo" src="Logo-wit.png" alt="Logo" height="150" width="150" />
-      <li><a class="nav-link" href="../HTML/Homepage.html" data-i18n="nav.home">Home</a></li>
-      <li><a class="nav-link" href="../HTML/aboutme.html" data-i18n="nav.home">About me</a></li>
-      <li><a class="nav-link" href="../HTML/projecten.html" data-i18n="nav.projects">My Previous Projects</a></li>
-      <li><a class="nav-link" href="../HTML/contact.html" data-i18n="nav.contact">Contact</a></li>
+<body class="bg-blue-900 text-white font-sans">
+
+<!-- NAVIGATION -->
+<header class="bg-blue-800/50 backdrop-blur sticky top-0 z-50">
+  <div class="container mx-auto flex justify-between items-center p-4">
+
+    <!-- NAV LINKS -->
+    <ul class="flex space-x-8">
+      <li><a href="../HTML/Homepage.html" data-i18n="home" class="font-medium">Home</a></li>
+      <li><a href="../HTML/projecten.html" data-i18n="projects" class="font-medium">Projects</a></li>
+      <li><a href="../HTML/contact.html" data-i18n="contact" class="font-medium">Contact</a></li>
     </ul>
-  </nav>
 
-  <h1 class="Landing" data-i18n="name">Welcome to my Website!</h1>
-  <p class="info">Click one of the links below, or above to see more!</p>
-<br>
-<!-- Duck Image -->
-<img class="image" src="../IMG/Eend.png" alt="Duck Drawing">
+    <!-- LANGUAGE DROPDOWN -->
+    <div class="relative">
+      <button
+        id="langBtn"
+        class="flex items-center gap-2 text-sm text-white/80 hover:text-white transition"
+      >
+        <img id="langFlag" class="w-5 h-3" src="../IMG/Flag_of_the_United_Kingdom.svg_.png" />
+        <span id="langLabel">English</span>
+        <i class="fa-solid fa-chevron-down text-xs"></i>
+      </button>
 
-<!-- Last.fm Currently Listening -->
-<div class="LastFM">
-  <p><strong>Currently Listening:</strong></p>
-  <img src="https://lastfm-recently-played.vercel.app/api?user=MisterrRichard&bg_color=0a0a66&text_color=ffffff&hideTitle=true&count=1" 
-       alt="Currently listening on Last.fm" 
-       style="border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); max-width: 100%; height: auto;">
+      <div
+        id="langMenu"
+        class="absolute right-0 mt-2 w-40 bg-blue-900/90 backdrop-blur rounded-lg shadow-lg hidden overflow-hidden"
+      >
+        <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="en">
+          <img src="../IMG/Flag_of_the_United_Kingdom.svg_.png" class="w-5 h-3"> English
+        </button>
+        <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="nl">
+          <img src="../IMG/Flag_of_the_Netherlands.svg.png" class="w-5 h-3"> Dutch
+        </button>
+        <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="de">
+          <img src="../IMG/Flag_of_Germany.svg.png" class="w-5 h-3"> German
+        </button>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<!-- HERO SECTION -->
+<section class="min-h-screen flex flex-col items-center justify-center text-center bg-gradient-to-b from-blue-800 to-blue-900 px-4">
+
+  <img src="../IMG/Eend.png" class="w-44 h-44 rounded-full border-4 border-white/20 mb-6" />
+
+  <h1 data-i18n="heroTitle" class="text-4xl md:text-5xl font-bold mb-4">
+    Welcome to my Website!
+  </h1>
+
+  <p data-i18n="intro1" class="max-w-3xl text-lg text-white/90 mb-2"></p>
+  <p data-i18n="intro2" class="max-w-3xl text-lg text-white/80"></p>
+
+  <!-- LANGUAGES -->
+<!-- Languages Section -->
+<div class="mt-12">
+  <h2
+    class="text-2xl md:text-3xl font-semibold mb-6"
+    data-i18n="contactLangsTitle"
+  >
+    Languages you can contact me in:
+  </h2>
+
+  <div class="flex flex-wrap justify-center gap-6 items-center">
+    <div class="flex flex-col items-center">
+      <img src="../IMG/Flag_of_Germany.svg.png" class="w-16 h-10">
+      <p class="mt-2 font-medium" data-i18n="langGerman">German</p>
+    </div>
+
+    <div class="flex flex-col items-center">
+      <img src="../IMG/1280px-Flag_of_the_United_Kingdom.svg_.png" class="w-16 h-10">
+      <p class="mt-2 font-medium" data-i18n="langEnglish">English</p>
+    </div>
+
+    <div class="flex flex-col items-center">
+      <img src="../IMG/Flag_of_the_Netherlands.svg.png" class="w-16 h-10">
+      <p class="mt-2 font-medium" data-i18n="langDutch">Dutch</p>
+    </div>
+  </div>
 </div>
 
-<!-- Social Media Footer -->
-<p class="SocialLinks">Follow me on Social Media:</p>
-<div style="text-align: center;">
-  <!-- Your social icons here -->
+  <!-- PROGRAMMING LANGUAGES -->
+  <div class="mt-16 w-full max-w-3xl">
+    <h2 data-i18n="progLangsTitle" class="text-2xl md:text-3xl font-semibold mb-6 text-center"></h2>
+
+<div class="mt-16 w-full max-w-3xl bg-white/10 p-6 rounded-lg flex justify-around items-center">
+  <!-- HTML -->
+  <i class="fab fa-html5 text-orange-500 text-3xl"></i>
+  <!-- CSS -->
+  <i class="fab fa-css3-alt text-blue-500 text-3xl"></i>
+  <!-- JavaScript -->
+  <i class="fab fa-js-square text-yellow-400 text-3xl"></i>
+  <!-- PHP -->
+  <i class="fab fa-php text-indigo-500 text-3xl"></i>
+  <!-- SQL -->
+  <i class="fas fa-database text-purple-500 text-3xl"></i>
+  <!-- Vue.js -->
+  <i class="fab fa-vuejs text-green-500 text-3xl"></i>
 </div>
 
-  <div class="fab-container">
-  <a href="https://www.instagram.com/duckie_richard/" target="_blank" class="fab twitter" aria-label="Twitter">
-    <i class="fab fa-instagram"></i>
-  </a>
-  <a href="https://www.youtube.com/@MisterrRichard" target="_blank" class="fab youtube" aria-label="YouTube">
-    <i class="fab fa-youtube"></i>
-  </a>
-  <a href="https://github.com/RichardWasNotAvailable" target="_blank" class="fab github" aria-label="GitHub">
-    <i class="fab fa-github"></i>
-  </a>
-   <a href="https://www.twitch.tv/misterrrichard_" target="_blank" class="fab github" aria-label="GitHub">
-    <i class="fab fa-twitch"></i>
-  </a>
-</div>
+  </div>
 
+</section>
 </body>
 </html>
