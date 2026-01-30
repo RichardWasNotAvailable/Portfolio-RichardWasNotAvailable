@@ -9,11 +9,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="../JS/main.js" defer></script>
-  <!-- MAIN JS -->
-  <script src="../JS/main.js" defer></script>
 </head>
 
-<body class="bg-blue-900 text-white font-sans">
+<body class="min-h-screen text-white font-sans
+             bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900">
 
 <!-- NAVIGATION -->
 <header class="bg-blue-800/50 backdrop-blur sticky top-0 z-50">
@@ -57,65 +56,108 @@
 </header>
 
 <!-- HERO SECTION -->
-<section class="min-h-screen flex flex-col items-center justify-center text-center bg-gradient-to-b from-blue-800 to-blue-900 px-4">
+<section class="min-h-screen flex flex-col items-center justify-center text-center px-4">
 
   <img src="../IMG/Eend.png" class="w-44 h-44 rounded-full border-4 border-white/20 mb-6" />
 
-  <h1 data-i18n="heroTitle" class="text-4xl md:text-5xl font-bold mb-4">
-    Welcome to my Website!
+  <h1 class="text-3xl md:text-4xl font-bold mb-4">
+    <span id="typewriter" data-i18n="heroTitle"></span>
+    <span class="animate-pulse">|</span>
   </h1>
 
   <p data-i18n="intro1" class="max-w-3xl text-lg text-white/90 mb-2"></p>
   <p data-i18n="intro2" class="max-w-3xl text-lg text-white/80"></p>
 
   <!-- LANGUAGES -->
-<!-- Languages Section -->
-<div class="mt-12">
-  <h2
-    class="text-2xl md:text-3xl font-semibold mb-6"
-    data-i18n="contactLangsTitle"
-  >
-    Languages you can contact me in:
-  </h2>
+  <div class="mt-12">
+    <h2
+      class="text-2xl md:text-3xl font-semibold mb-6"
+      data-i18n="contactLangsTitle"
+    >
+      Languages you can contact me in:
+    </h2>
 
-  <div class="flex flex-wrap justify-center gap-6 items-center">
-    <div class="flex flex-col items-center">
-      <img src="../IMG/Flag_of_Germany.svg.png" class="w-16 h-10">
-      <p class="mt-2 font-medium" data-i18n="langGerman">German</p>
-    </div>
+    <div class="flex flex-wrap justify-center gap-6 items-center">
+      <div class="flex flex-col items-center">
+        <img src="../IMG/Flag_of_Germany.svg.png" class="w-16 h-10">
+        <p class="mt-2 font-medium" data-i18n="langGerman">German</p>
+      </div>
 
-    <div class="flex flex-col items-center">
-      <img src="../IMG/Flag_of_the_United_Kingdom.svg_.png" class="w-16 h-10">
-      <p class="mt-2 font-medium" data-i18n="langEnglish">English</p>
-    </div>
+      <div class="flex flex-col items-center">
+        <img src="../IMG/Flag_of_the_United_Kingdom.svg_.png" class="w-16 h-10">
+        <p class="mt-2 font-medium" data-i18n="langEnglish">English</p>
+      </div>
 
-    <div class="flex flex-col items-center">
-      <img src="../IMG/Flag_of_the_Netherlands.svg.png" class="w-16 h-10">
-      <p class="mt-2 font-medium" data-i18n="langDutch">Dutch</p>
+      <div class="flex flex-col items-center">
+        <img src="../IMG/Flag_of_the_Netherlands.svg.png" class="w-16 h-10">
+        <p class="mt-2 font-medium" data-i18n="langDutch">Dutch</p>
+      </div>
     </div>
   </div>
-</div>
 
   <!-- PROGRAMMING LANGUAGES -->
   <div class="mt-16 w-full max-w-3xl">
-    <h2 data-i18n="progLangsTitle" class="text-2xl md:text-3xl font-semibold mb-6 text-center"></h2>
+  <h2 data-i18n="progLangsTitle" class="text-2xl md:text-3xl font-semibold mb-6 text-center"></h2>
 
-<div class="mt-16 w-full max-w-3xl bg-white/10 p-6 rounded-lg flex justify-around items-center">
-  <!-- HTML -->
-  <i class="fab fa-html5 text-orange-500 text-3xl"></i>
-  <!-- CSS -->
-  <i class="fab fa-css3-alt text-blue-500 text-3xl"></i>
-  <!-- JavaScript -->
-  <i class="fab fa-js-square text-yellow-400 text-3xl"></i>
-  <!-- PHP -->
-  <i class="fab fa-php text-indigo-500 text-3xl"></i>
-  <!-- SQL -->
-  <i class="fas fa-database text-purple-500 text-3xl"></i>
-  <!-- Vue.js -->
-  <i class="fab fa-vuejs text-green-500 text-3xl"></i>
-</div>
+  <div class="mt-6 w-full bg-white/10 p-6 rounded-lg flex justify-around items-center flex-wrap gap-6">
 
+    <!-- HTML -->
+    <div class="relative group">
+      <i class="fab fa-html5 text-orange-500 text-3xl transition-transform duration-300 hover:scale-125 hover:drop-shadow-[0_0_15px_rgba(255,165,0,0.7)] cursor-pointer"></i>
+      <span class="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 bg-black/70 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        HTML
+      </span>
+    </div>
+
+    <!-- CSS -->
+    <div class="relative group">
+      <i class="fab fa-css3-alt text-blue-500 text-3xl transition-transform duration-300 hover:scale-125 hover:drop-shadow-[0_0_15px_rgba(59,130,246,0.7)] cursor-pointer"></i>
+      <span class="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 bg-black/70 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        CSS
+      </span>
+    </div>
+
+    <!-- JavaScript -->
+    <div class="relative group">
+      <i class="fab fa-js-square text-yellow-400 text-3xl transition-transform duration-300 hover:scale-125 hover:drop-shadow-[0_0_15px_rgba(253,224,71,0.7)] cursor-pointer"></i>
+      <span class="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 bg-black/70 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        JavaScript
+      </span>
+    </div>
+
+    <!-- PHP -->
+    <div class="relative group">
+      <i class="fab fa-php text-indigo-500 text-3xl transition-transform duration-300 hover:scale-125 hover:drop-shadow-[0_0_15px_rgba(99,102,241,0.7)] cursor-pointer"></i>
+      <span class="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 bg-black/70 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        PHP
+      </span>
+    </div>
+
+    <!-- SQL -->
+    <div class="relative group">
+      <i class="fas fa-database text-purple-500 text-3xl transition-transform duration-300 hover:scale-125 hover:drop-shadow-[0_0_15px_rgba(139,92,246,0.7)] cursor-pointer"></i>
+      <span class="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 bg-black/70 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        MySQL
+      </span>
+    </div>
+
+    <!-- Vue.js -->
+    <div class="relative group">
+      <i class="fab fa-vuejs text-green-500 text-3xl transition-transform duration-300 hover:scale-125 hover:drop-shadow-[0_0_15px_rgba(34,197,94,0.7)] cursor-pointer"></i>
+      <span class="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 bg-black/70 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        Vue.js
+      </span>
+    </div>
+
+    <!-- Laravel -->
+    <div class="relative group">
+      <i class="fab fa-laravel text-red-500 text-3xl transition-transform duration-300 hover:scale-125 hover:drop-shadow-[0_0_15px_rgba(255,45,32,0.7)] cursor-pointer"></i>
+      <span class="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 bg-black/70 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        Laravel
+      </span>
+    </div>
   </div>
+</div>
 
 </section>
 </body>
