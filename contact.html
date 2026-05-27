@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="contact">Contact</title>
+    <link rel="icon" type="image/x-icon" href="/IMG/DuckMonogram.ico">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="min-h-screen text-white font-sans bg-gradient-to-br from-black via-gray-900 to-gray-800">
+ 
+<!-- NAVIGATION -->
+<header class="bg-gray-800/50 backdrop-blur sticky top-0 z-50">
+  <div class="container mx-auto flex justify-between items-center p-4">
+
+    <!-- NAV LINKS -->
+    <ul class="flex space-x-8">
+      <li><a href="/" data-i18n="home" class="font-medium">Home</a></li>
+      <li><a href="/projecten" data-i18n="projects" class="font-medium">Projects</a></li>
+      <li><a href="/contact" data-i18n="contact" class="font-medium">Contact</a></li>
+    </ul>
+
+     <!-- LANGUAGE DROPDOWN -->
+    <div class="relative">
+      <button
+        id="langBtn"
+        class="flex items-center gap-2 text-sm text-white/80 hover:text-white transition"
+      >
+        <img id="langFlag" class="w-5 h-3" src="../IMG/Flag_of_the_United_Kingdom.svg_.png" />
+        <span id="langLabel">English</span>
+        <i class="fa-solid fa-chevron-down text-xs"></i>
+      </button>
+
+      <div
+        id="langMenu"
+        class="absolute right-0 mt-2 w-40 bg-gray-900/90 backdrop-blur rounded-lg shadow-lg hidden overflow-hidden"
+      >
+        <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="en">
+          <img src="./IMG/Flag_of_the_United_Kingdom.svg_.png" class="w-5 h-3"> English
+        </button>
+        <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="nl">
+          <img src="./IMG/Flag_of_the_Netherlands.svg.png" class="w-5 h-3"> Dutch
+        </button>
+        <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="de">
+          <img src="./IMG/Flag_of_Germany.svg.png" class="w-5 h-3"> German
+        </button>
+        <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="sv">
+  <img src="./IMG/Flag_of_Sweden.svg.png" class="w-5 h-3"> Swedish
+</button>
+    <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="pt">
+  <img src="./IMG/Flag_of_Portugal.svg.png" class="w-5 h-3"> Portugese
+</button>
+    <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="pl">
+  <img src="./IMG/Flag_of_Poland.svg.png" class="w-5 h-3"> Polish
+</button>
+  <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="no">
+  <img src="./IMG/Flag_of_Norway.svg.png" class="w-5 h-3"> Norwegian
+</button>
+ <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="bar">
+  <img src="./IMG/Beieren.jpg" class="w-5 h-3"> Bavarian
+</button>
+ <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="fy">
+  <img src="./IMG/Friesland.png" class="w-5 h-3"> Frysk
+</button>
+ <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="jp">
+  <img src="./IMG/Japan.png" class="w-5 h-3"> Japanese
+</button>
+ <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="su">
+  <img src="./IMG/Rusland.jpg" class="w-5 h-3"> Russian
+</button>
+<button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="cy">
+  <img src="./IMG/Flag_of_Wales.svg.png" class="w-5 h-3"> Welsh
+</button>
+      </div>
+    </div>
+
+  </div>
+
+
+
+</header>
+<!-- CONTACT HEADER -->
+<section class="container mx-auto px-4 py-12 text-center">
+  <h1 class="text-3xl md:text-4xl font-bold mb-4" data-i18n="contact">Contact</h1>
+  <p class="text-white/80 mb-8" data-i18n="contactIntro">
+    You can find me on the following platforms:
+  </p>
+
+  <!-- SOCIAL LINKS -->
+  <div class="flex flex-wrap justify-center gap-4 mb-12">
+  <a href="https://github.com/RichardWasNotAvailable" target="_blank" class="px-4 py-2 bg-gray-700 rounded">
+      <i class="fab fa-github"> GitHub</i> 
+    </a>
+    <a href="https://www.linkedin.com/in/richard-schepen-8a9388290/" target="_blank" class="px-4 py-2 bg-blue-700 rounded">
+      <i class="fab fa-linkedin"> LinkedIn</i>
+    </a>
+    <a href="mailto:richardschepen15@gmail.com" target="_blank" class="px-4 py-2 bg-red-700 rounded">
+      <i class="fa-regular fa-envelope"> Mail me</i>
+    </a>
+  </div>
+
+  <!-- CONTACT FORM -->
+  <form action="https://formspree.io/f/mldnwlan" method="POST"
+    class="max-w-md mx-auto bg-white/10 p-6 rounded-xl">
+
+    <div class="mb-4">
+      <input type="email" name="email" required
+        class="w-full px-4 py-2 rounded bg-white/20 text-black"
+        placeholder=""
+      >
+      <label class="text-sm text-white/70" data-i18n="emailLabel">Your Email</label>
+    </div>
+
+    <div class="mb-4">
+      <textarea name="message" rows="5" required
+        class="w-full px-4 py-2 rounded bg-white/20 text-black"></textarea>
+      <label class="text-sm text-white/70" data-i18n="messageLabel">Message</label>
+    </div>
+
+    <button type="submit"
+      class="w-full py-2 bg-blue-600 rounded font-semibold"
+      data-i18n="sendBtn">
+      Send
+    </button>
+  </form>
+</section>
+
+<script src="./JS/main.js"></script>
+</body>
+</html>

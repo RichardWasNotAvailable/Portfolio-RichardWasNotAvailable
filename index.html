@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home</title>
+  <link rel="icon" type="image/x-icon" href="/IMG/DuckMonogram.ico">
+  <link rel="stylesheet" href="../CSS/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../JS/main.js" defer></script>
+</head>
+
+<body class="min-h-screen text-white font-sans bg-gradient-to-br from-black via-gray-900 to-gray-800">
+
+<!-- NAVIGATION -->
+<header class="bg-gray-800/50 backdrop-blur sticky top-0 z-50">
+  <div class="container mx-auto flex justify-between items-center p-4">
+
+    <!-- NAV LINKS -->
+    <ul class="flex space-x-6">
+      <li><a href="/" data-i18n="home" class="font-medium">Home</a></li>
+      <li><a href="/projecten" data-i18n="projects" class="font-medium">Projects</a></li>
+      <li><a href="/contact" data-i18n="contact" class="font-medium">Contact</a></li>
+    </ul>
+
+    <div class="relative">
+      <button
+        id="langBtn"
+        class="flex items-center gap-2 text-sm text-white/80 hover:text-white transition"
+      >
+        <img id="langFlag" class="w-5 h-3" src="../IMG/Flag_of_the_United_Kingdom.svg_.png" />
+        <span id="langLabel">English</span>
+        <i class="fa-solid fa-chevron-down text-xs"></i>
+      </button>
+
+      <div
+        id="langMenu"
+        class="absolute right-0 mt-2 w-40 bg-gray-900/90 backdrop-blur rounded-lg shadow-lg hidden overflow-hidden"
+      >
+        <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="en">
+          <img src="./IMG/Flag_of_the_United_Kingdom.svg_.png" class="w-5 h-3"> English
+        </button>
+        <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="nl">
+          <img src="./IMG/Flag_of_the_Netherlands.svg.png" class="w-5 h-3"> Dutch
+        </button>
+        <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="de">
+          <img src="./IMG/Flag_of_Germany.svg.png" class="w-5 h-3"> German
+        </button>
+        <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="sv">
+  <img src="./IMG/Flag_of_Sweden.svg.png" class="w-5 h-3"> Swedish
+</button>
+    <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="pt">
+  <img src="./IMG/Flag_of_Portugal.svg.png" class="w-5 h-3"> Portugese
+</button>
+    <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="pl">
+  <img src="./IMG/Flag_of_Poland.svg.png" class="w-5 h-3"> Polish
+</button>
+  <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="no">
+  <img src="./IMG/Flag_of_Norway.svg.png" class="w-5 h-3"> Norwegian
+</button>
+ <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="bar">
+  <img src="./IMG/Beieren.jpg" class="w-5 h-3"> Bavarian
+</button>
+ <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="fy">
+  <img src="./IMG/Friesland.png" class="w-5 h-3"> Frysk
+</button>
+ <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="jp">
+  <img src="./IMG/Japan.png" class="w-5 h-3"> Japanese
+</button>
+ <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="su">
+  <img src="./IMG/Rusland.jpg" class="w-5 h-3"> Russian
+</button>
+ <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="cy">
+  <img src="./IMG/Flag_of_Wales.svg.png" class="w-5 h-3"> Welsh
+</button>
+      </div>
+    </div>
+
+  </div>
+</header>
+<!-- HERO SECTION -->
+<section class="min-h-screen flex flex-col items-center justify-center text-center px-4">
+
+  <img src="./IMG/Eend.png" class="w-44 h-44 rounded-full border-4 border-white/20 mb-6" />
+
+  <h1 class="text-3xl md:text-4xl font-bold mb-4">
+    <span id="typewriter" data-i18n="heroTitle"></span>
+    <span class="animate-pulse">|</span>
+  </h1>
+
+  <p data-i18n="intro1" class="max-w-3xl text-lg text-white/90 mb-2"></p>
+  <p data-i18n="intro2" class="max-w-3xl text-lg text-white/80"></p>
+
+  <!-- LANGUAGES -->
+  <div class="mt-12">
+    <h2
+      class="text-2xl md:text-3xl font-semibold mb-6"
+      data-i18n="contactLangsTitle"
+    >
+      Spoken languages:
+    </h2>
+
+    <div class="flex flex-wrap justify-center gap-6 items-center">
+      <div class="flex flex-col items-center">
+        <img src="./IMG/Flag_of_Germany.svg.png" class="w-16 h-10">
+        <p class="mt-2 font-medium" data-i18n="langGerman">German</p>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <img src="./IMG/Flag_of_the_United_Kingdom.svg_.png" class="w-16 h-10">
+        <p class="mt-2 font-medium" data-i18n="langEnglish">English</p>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <img src="./IMG/Flag_of_the_Netherlands.svg.png" class="w-16 h-10">
+        <p class="mt-2 font-medium" data-i18n="langDutch">Dutch</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROGRAMMING LANGUAGES -->
+<div class="mt-16 w-full max-w-sm sm:max-w-2xl mx-auto">
+  <h2 data-i18n="progLangsTitle" class="text-xl font-semibold mb-6 text-center"></h2>
+
+  <!-- Scroll ONLY on phones -->
+  <div class="mt-6 bg-white/10 p-3 sm:p-6 rounded-lg overflow-x-auto sm:overflow-visible">
+    <div class="flex items-center gap-6 whitespace-nowrap sm:whitespace-normal sm:justify-around">
+
+      <!-- HTML -->
+      <div class="flex flex-col items-center shrink-0 sm:shrink relative group">
+        <i class="devicon-html5-plain text-orange-500 text-2xl sm:text-3xl transition-transform duration-300 hover:scale-125 cursor-pointer" title="HTML"></i>
+        <span class="mt-2 text-xs text-white/80 sm:hidden">HTML</span>
+        <span class="hidden sm:block absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-black/70 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition">HTML</span>
+      </div>
+
+      <!-- CSS -->
+      <div class="flex flex-col items-center shrink-0 sm:shrink relative group">
+        <i class="devicon-css3-plain text-blue-500 text-2xl sm:text-3xl transition-transform duration-300 hover:scale-125 cursor-pointer" title="CSS"></i>
+        <span class="mt-2 text-xs text-white/80 sm:hidden">CSS</span>
+        <span class="hidden sm:block absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-black/70 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition">CSS</span>
+      </div>
+
+      <!-- JavaScript -->
+      <div class="flex flex-col items-center shrink-0 sm:shrink relative group">
+        <i class="devicon-javascript-plain text-yellow-400 text-2xl sm:text-3xl transition-transform duration-300 hover:scale-125 cursor-pointer" title="JavaScript"></i>
+        <span class="mt-2 text-xs text-white/80 sm:hidden">JS</span>
+        <span class="hidden sm:block absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-black/70 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition">JavaScript</span>
+      </div>
+
+      <!-- TypeScript -->
+      <div class="flex flex-col items-center shrink-0 sm:shrink relative group">
+        <i class="devicon-typescript-plain text-blue-600 text-2xl sm:text-3xl transition-transform duration-300 hover:scale-125 cursor-pointer" title="TypeScript"></i>
+        <span class="mt-2 text-xs text-white/80 sm:hidden">TS</span>
+        <span class="hidden sm:block absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-black/70 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition">TypeScript</span>
+      </div>
+
+      <!-- PHP -->
+      <div class="flex flex-col items-center shrink-0 sm:shrink relative group">
+        <i class="devicon-php-plain text-indigo-500 text-2xl sm:text-3xl transition-transform duration-300 hover:scale-125 cursor-pointer" title="PHP"></i>
+        <span class="mt-2 text-xs text-white/80 sm:hidden">PHP</span>
+        <span class="hidden sm:block absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-black/70 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition">PHP</span>
+      </div>
+
+      <!-- SQL -->
+      <div class="flex flex-col items-center shrink-0 sm:shrink relative group">
+        <i class="devicon-mysql-plain text-purple-500 text-2xl sm:text-3xl transition-transform duration-300 hover:scale-125 cursor-pointer" title="SQL"></i>
+        <span class="mt-2 text-xs text-white/80 sm:hidden">SQL</span>
+        <span class="hidden sm:block absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-black/70 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition">SQL</span>
+      </div>
+
+      <!-- Vue.js -->
+      <div class="flex flex-col items-center shrink-0 sm:shrink relative group">
+        <i class="devicon-vuejs-plain text-green-500 text-2xl sm:text-3xl transition-transform duration-300 hover:scale-125 cursor-pointer" title="Vue.js"></i>
+        <span class="mt-2 text-xs text-white/80 sm:hidden">Vue</span>
+        <span class="hidden sm:block absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-black/70 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition">Vue.js</span>
+      </div>
+
+      <!-- Laravel -->
+      <div class="flex flex-col items-center shrink-0 sm:shrink relative group">
+        <i class="devicon-laravel-plain text-red-500 text-2xl sm:text-3xl transition-transform duration-300 hover:scale-125 cursor-pointer" title="Laravel"></i>
+        <span class="mt-2 text-xs text-white/80 sm:hidden">Laravel</span>
+        <span class="hidden sm:block absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-black/70 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition">Laravel</span>
+      </div>
+
+      <!-- React -->
+      <div class="flex flex-col items-center shrink-0 sm:shrink relative group">
+        <i class="devicon-react-plain text-sky-400 text-2xl sm:text-3xl transition-transform duration-300 hover:scale-125 cursor-pointer" title="React"></i>
+        <span class="mt-2 text-xs text-white/80 sm:hidden">React</span>
+        <span class="hidden sm:block absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-black/70 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition">React</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+<a href="/secret" data-i18n="Free cookie 🍪" class="font-medium">Free cookie 🍪</a>
+</section>
+</body>
+</html>

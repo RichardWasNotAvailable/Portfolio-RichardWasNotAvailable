@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="projects">Projects</title>
+<link rel="icon" type="image/x-icon" href="/IMG/DuckMonogram.ico">
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen text-white font-sans bg-gradient-to-br from-black via-gray-900 to-gray-800">
+
+<!-- NAVIGATION -->
+<header class="bg-gray-800/50 backdrop-blur sticky top-0 z-50">
+  <div class="container mx-auto flex justify-between items-center p-4">
+
+    <!-- NAV LINKS -->
+    <ul class="flex space-x-8">
+      <li><a href="/" data-i18n="home" class="font-medium">Home</a></li>
+      <li><a href="/projecten" data-i18n="projects" class="font-medium">Projects</a></li>
+      <li><a href="/contact" data-i18n="contact" class="font-medium">Contact</a></li>
+    </ul>
+
+    <div class="relative">
+      <button
+        id="langBtn"
+        class="flex items-center gap-2 text-sm text-white/80 hover:text-white transition"
+      >
+        <img id="langFlag" class="w-5 h-3" src="../IMG/Flag_of_the_United_Kingdom.svg_.png" />
+        <span id="langLabel">English</span>
+        <i class="fa-solid fa-chevron-down text-xs"></i>
+      </button>
+
+      <div
+        id="langMenu"
+        class="absolute right-0 mt-2 w-40 bg-gray-900/90 backdrop-blur rounded-lg shadow-lg hidden overflow-hidden"
+      >
+        <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="en">
+          <img src="./IMG/Flag_of_the_United_Kingdom.svg_.png" class="w-5 h-3"> English
+        </button>
+        <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="nl">
+          <img src="./IMG/Flag_of_the_Netherlands.svg.png" class="w-5 h-3"> Dutch
+        </button>
+        <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="de">
+          <img src="./IMG/Flag_of_Germany.svg.png" class="w-5 h-3"> German
+        </button>
+        <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="sv">
+  <img src="./IMG/Flag_of_Sweden.svg.png" class="w-5 h-3"> Swedish
+</button>
+    <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="pt">
+  <img src="./IMG/Flag_of_Portugal.svg.png" class="w-5 h-3"> Portugese
+</button>
+    <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="pl">
+  <img src="./IMG/Flag_of_Poland.svg.png" class="w-5 h-3"> Polish
+</button>
+  <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="no">
+  <img src="./IMG/Flag_of_Norway.svg.png" class="w-5 h-3"> Norwegian
+</button>
+ <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="bar">
+  <img src="./IMG/Beieren.jpg" class="w-5 h-3"> Bavarian
+</button>
+ <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="fy">
+  <img src="./IMG/Friesland.png" class="w-5 h-3"> Frysk
+</button>
+ <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="jp">
+  <img src="./IMG/Japan.png" class="w-5 h-3"> Japanese
+</button>
+ <button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="su">
+  <img src="./IMG/Rusland.jpg" class="w-5 h-3"> Russian
+</button>
+<button class="lang-option flex items-center gap-2 w-full px-4 py-2 hover:bg-blue-800" data-lang="cy">
+  <img src="./IMG/Flag_of_Wales.svg.png" class="w-5 h-3"> Welsh
+</button>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<!-- PAGE HEADER -->
+<section class="container mx-auto px-4 py-12 text-center">
+<h1 class="text-2xl md:text-3xl font-bold mb-6" data-i18n="projectsIntro"></h1>
+</section>
+
+<!-- PROJECTS GRID -->
+<section class="container mx-auto px-4 pb-16 grid gap-8
+grid-cols-1
+sm:grid-cols-2
+lg:grid-cols-3
+xl:grid-cols-4">
+
+<div class="bg-white/10 p-4 rounded-xl hover:scale-105 transition">
+<h2 class="text-xl font-semibold" data-i18n="trafficTitle"></h2>
+<p class="text-sm text-white/80 mb-3" data-i18n="trafficDesc"></p>
+<img src="../IMG/trafficgame.gif" alt="Trafficgame" class="clickable-img w-full rounded-lg shadow-md cursor-pointer">
+</div>
+
+<div class="bg-white/10 p-4 rounded-xl hover:scale-105 transition">
+<h2 class="text-xl font-semibold" data-i18n="cookieTitle"></h2>
+<p class="text-sm text-white/80 mb-3" data-i18n="cookieDesc"></p>
+<img src="../IMG/Cookieclicker.png" alt="CookieClicker" class="clickable-img w-full rounded-lg shadow-md cursor-pointer">
+</div>
+
+<div class="bg-white/10 p-4 rounded-xl hover:scale-105 transition">
+<h2 class="text-xl font-semibold" data-i18n="churpifyTitle"></h2>
+<p class="text-sm text-white/80 mb-3" data-i18n="churpifyDesc"></p>
+<img src="../IMG/Churpify.png" alt="Churpify" class="clickable-img w-full rounded-lg shadow-md cursor-pointer">
+</div>
+
+<div class="bg-white/10 p-4 rounded-xl hover:scale-105 transition">
+<h2 class="text-xl font-semibold" data-i18n="portfolioTitle"></h2>
+<p class="text-sm text-white/80 mb-3" data-i18n="PortfolioDesc"></p>
+<img src="../IMG/portfolioWebsite.png" alt="Portfolio" class="clickable-img w-full rounded-lg shadow-md cursor-pointer">
+</div>
+
+<div class="bg-white/10 p-4 rounded-xl hover:scale-105 transition">
+<h2 class="text-xl font-semibold" data-i18n="badWebsiteTitle"></h2>
+<p class="text-sm text-white/80 mb-3" data-i18n="BadWebsiteDesc"></p>
+<img src="../IMG/SlechteWebsite.png" alt="Bad Website" class="clickable-img w-full rounded-lg shadow-md cursor-pointer">
+</div>
+
+<div class="bg-white/10 p-4 rounded-xl hover:scale-105 transition">
+<h2 class="text-xl font-semibold" data-i18n="githubStatsTitle"></h2>
+<p class="text-sm text-white/80 mb-3" data-i18n="GitHubStatDesc"></p>
+<img src="../IMG/GitHubStatsChecker.png" alt="GitHub Stats Checker" class="clickable-img w-full rounded-lg shadow-md cursor-pointer">
+</div>
+
+<div class="bg-white/10 p-4 rounded-xl hover:scale-105 transition">
+<h2 class="text-xl font-semibold" data-i18n="BlackjackTitle"></h2>
+<p class="text-sm text-white/80 mb-3" data-i18n="BlackjackDesc"></p>
+<img src="../IMG/BlackJackGame.png" alt="Blackjack" class="clickable-img w-full rounded-lg shadow-md cursor-pointer">
+</div>
+
+<div class="bg-white/10 p-4 rounded-xl hover:scale-105 transition">
+<h2 class="text-xl font-semibold" data-i18n="AILabTitle"></h2>
+<p class="text-sm text-white/80 mb-3" data-i18n="AILabDesc"></p>
+<img src="../IMG/Project_SociaalAILab.png" alt="SociaalAILab" class="clickable-img w-full rounded-lg shadow-md cursor-pointer">
+</div>
+</section>
+
+<!-- IMAGE MODAL -->
+<div id="imgModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+<img id="modalImg" class="max-w-[90%] max-h-[90%] rounded-xl shadow-2xl">
+</div>
+
+<!-- ZOOM SCRIPT USING EVENT DELEGATION -->
+<script>
+document.addEventListener("click", function(e) {
+  const modal = document.getElementById("imgModal");
+  const modalImg = document.getElementById("modalImg");
+
+  if (e.target.classList.contains("clickable-img")) {
+    modalImg.src = e.target.src;
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+  }
+
+  if (e.target.id === "imgModal") {
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+  }
+});
+</script>
+
+<!-- Your translator script -->
+<script defer src="../JS/main.js"></script>
+
+</body>
+</html>

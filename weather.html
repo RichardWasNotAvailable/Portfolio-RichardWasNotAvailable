@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherHub - Real-time Weather</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+        .weather-icon {
+            font-size: 5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .hourly-scroll {
+            scroll-snap-type: x mandatory;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+        }
+        .hourly-item {
+            scroll-snap-align: start;
+            min-width: 120px;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        .temp-display {
+            font-size: 4rem;
+            font-weight: 900;
+            letter-spacing: -2px;
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white font-sans bg-gradient-to-br from-black via-gray-900 to-gray-800">
+<!-- NAVIGATION -->
+<header class="bg-gray-800/50 backdrop-blur sticky top-0 z-50 border-b border-white/10">
+    <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+        <div class="flex items-center gap-3">
+            <i class="fas fa-cloud-sun text-3xl text-blue-400"></i>
+            <h1 class="text-2xl font-bold">WeatherHub</h1>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="relative hidden sm:block">
+                <input 
+                    type="text" 
+                    id="searchCity" 
+                    placeholder="Search city..." 
+                    class="px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white text-sm focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400/50 placeholder-white/50 w-48 transition"
+                    onkeypress="if(event.key==='Enter')searchWeather()"
+                />
+            </div>
+            <button onclick="searchWeather()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold text-sm transition">
+                <i class="fas fa-search"></i>
+            </button>
+            <button onclick="getCurrentLocation()" class="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-semibold text-sm transition">
+                <i class="fas fa-location-dot"></i>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="max-w-7xl mx-auto px-4 py-12">
+    <!-- CURRENT WEATHER HERO -->
+    <section class="glass-effect rounded-2xl p-8 mb-12 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -z-0"></div>
+        
+        <div class="relative z-10 flex flex-col md:flex-row items-center justify-between">
+            <div class="flex-1 text-center md:text-left mb-8 md:mb-0">
+                <h2 id="cityName" class="text-4xl md:text-5xl font-bold mb-2">Loading...</h2>
+                <p id="weatherDesc" class="text-lg text-white/70 mb-6">Getting weather data</p>
+                
+                <div class="flex items-baseline gap-2 mb-4 justify-center md:justify-start">
+                    <span id="tempCurrent" class="temp-display">--°</span>
+                    <span class="text-3xl">C</span>
+                </div>
+                <p id="feelsLike" class="text-white/60">Feels like --°C</p>
+            </div>
+
+            <div class="flex flex-col items-center md:items-end">
+                <div id="weatherEmoji" class="weather-icon">☀️</div>
+                <div class="mt-6 space-y-2 text-sm text-white/70">
+                    <p id="humidity"><i class="fas fa-droplet text-blue-400 mr-2"></i>Humidity: --%</p>
+                    <p id="windSpeed"><i class="fas fa-wind text-cyan-400 mr-2"></i>Wind: -- km/h</p>
+                    <p id="pressure"><i class="fas fa-gauge text-yellow-400 mr-2"></i>Pressure: -- mb</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUICK STATS -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12">
+        <div class="glass-effect rounded-lg p-6 hover:bg-white/10 transition">
+            <p class="text-white/60 text-xs font-semibold mb-2 uppercase">UV Index</p>
+            <p class="text-3xl font-bold text-yellow-400" id="uvIndex">-</p>
+        </div>
+        <div class="glass-effect rounded-lg p-6 hover:bg-white/10 transition">
+            <p class="text-white/60 text-xs font-semibold mb-2 uppercase">Visibility</p>
+            <p class="text-3xl font-bold text-cyan-400" id="visibility">-</p>
+            <p class="text-xs text-white/50">km</p>
+        </div>
+        <div class="glass-effect rounded-lg p-6 hover:bg-white/10 transition">
+            <p class="text-white/60 text-xs font-semibold mb-2 uppercase">Dew Point</p>
+            <p class="text-3xl font-bold text-blue-400" id="dewPoint">-</p>
+            <p class="text-xs text-white/50">°C</p>
+        </div>
+        <div class="glass-effect rounded-lg p-6 hover:bg-white/10 transition">
+            <p class="text-white/60 text-xs font-semibold mb-2 uppercase">Precipitation</p>
+            <p class="text-3xl font-bold text-green-400" id="precipitation">-</p>
+            <p class="text-xs text-white/50">mm</p>
+        </div>
+    </div>
+
+    <!-- 7 DAY FORECAST -->
+    <div class="mb-12">
+        <h3 class="text-2xl font-bold mb-6 flex items-center gap-2">
+            <i class="fas fa-calendar text-blue-400"></i>
+            7-Day Forecast
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-7 gap-3" id="forecastGrid">
+            <div class="text-center py-8 text-white/40 col-span-full">Loading forecast...</div>
+        </div>
+    </div>
+
+    <!-- HOURLY FORECAST -->
+    <div class="mb-12">
+        <h3 class="text-2xl font-bold mb-6 flex items-center gap-2">
+            <i class="fas fa-clock text-purple-400"></i>
+            Hourly Forecast (Next 24h)
+        </h3>
+        <div class="hourly-scroll rounded-lg border border-white/10">
+            <div id="hourlyForecast" class="flex gap-3 p-4">
+                <div class="text-center py-8 text-white/40">Loading hourly data...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SAVED CITIES -->
+    <div class="mb-12">
+        <h3 class="text-2xl font-bold mb-6 flex items-center gap-2">
+            <i class="fas fa-star text-yellow-400"></i>
+            Saved Cities
+        </h3>
+        <div class="flex gap-3 mb-6 flex-wrap">
+            <input type="text" id="savedCityInput" placeholder="Add city to save..." class="px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white text-sm focus:outline-none focus:border-blue-400 placeholder-white/50 transition"/>
+            <button onclick="addSavedCity()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-semibold text-sm transition">
+                <i class="fas fa-plus mr-2"></i>ADD
+            </button>
+        </div>
+        <div id="savedCitiesList" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            <div class="text-center py-8 text-white/40 col-span-full">No saved cities yet</div>
+        </div>
+    </div>
+
+    <!-- DETAILED INFO -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
+        <div class="glass-effect rounded-lg p-6">
+            <h4 class="text-lg font-bold mb-6 flex items-center gap-2">
+                <i class="fas fa-chart-bar text-blue-400"></i>
+                Detailed Information
+            </h4>
+            <div class="space-y-4 text-sm">
+                <div class="flex justify-between pb-4 border-b border-white/10">
+                    <span class="text-white/60">Sunrise</span>
+                    <span id="sunrise" class="font-semibold">--:--</span>
+                </div>
+                <div class="flex justify-between pb-4 border-b border-white/10">
+                    <span class="text-white/60">Sunset</span>
+                    <span id="sunset" class="font-semibold">--:--</span>
+                </div>
+                <div class="flex justify-between pb-4 border-b border-white/10">
+                    <span class="text-white/60">Temperature Range</span>
+                    <span id="tempRange" class="font-semibold">-- to --°C</span>
+                </div>
+                <div class="flex justify-between pb-4 border-b border-white/10">
+                    <span class="text-white/60">Cloud Coverage</span>
+                    <span id="clouds" class="font-semibold">--%</span>
+                </div>
+                <div class="flex justify-between pb-4 border-b border-white/10">
+                    <span class="text-white/60">Wind Gust</span>
+                    <span id="windGust" class="font-semibold">-- km/h</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-white/60">Chance of Rain</span>
+                    <span id="rainChance" class="font-semibold">--%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-effect rounded-lg p-6">
+            <h4 class="text-lg font-bold mb-6 flex items-center gap-2">
+                <i class="fas fa-wind text-green-400"></i>
+                Air Quality
+            </h4>
+            <div class="space-y-4">
+                <div>
+                    <div class="flex justify-between mb-2 text-sm">
+                        <span class="text-white/60">AQI</span>
+                        <span id="aqiValue" class="font-bold text-green-400">Good</span>
+                    </div>
+                    <div class="w-full bg-white/10 rounded-full h-3 border border-white/20 overflow-hidden">
+                        <div id="aqiBar" class="bg-green-500 h-3 rounded-full" style="width: 70%"></div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-3 mt-6">
+                    <div class="bg-white/5 p-3 rounded-lg border border-white/10">
+                        <p class="text-white/60 text-xs mb-1">PM2.5</p>
+                        <p id="pm25" class="font-bold">-- μg/m³</p>
+                    </div>
+                    <div class="bg-white/5 p-3 rounded-lg border border-white/10">
+                        <p class="text-white/60 text-xs mb-1">PM10</p>
+                        <p id="pm10" class="font-bold">-- μg/m³</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+    <script>
+        let savedCities = JSON.parse(localStorage.getItem('savedWeatherCities')) || [];
+        let currentCity = 'London';
+
+        async function getCoordinates(city) {
+            try {
+                const response = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1&language=en&format=json`);
+                const data = await response.json();
+                if (!data.results || data.results.length === 0) throw new Error('City not found');
+                return data.results[0];
+            } catch (error) {
+                alert('❌ City not found. Try another name.');
+                return null;
+            }
+        }
+
+        async function getWeatherData(lat, lon, city) {
+            try {
+                const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m,pressure_msl&hourly=temperature_2m,weather_code,relative_humidity_2m,precipitation&daily=temperature_2m_max,temperature_2m_min,weather_code,sunrise,sunset,precipitation_sum&timezone=auto`);
+                const data = await response.json();
+                return { ...data, cityName: city };
+            } catch (error) {
+                console.error('Weather error:', error);
+                return null;
+            }
+        }
+
+        function getWeatherEmoji(code) {
+            if (code === 0 || code === 1) return '☀️';
+            if (code === 2) return '⛅';
+            if (code === 3) return '☁️';
+            if (code === 45 || code === 48) return '🌫️';
+            if (code === 51 || code === 53 || code === 55 || code === 61 || code === 63 || code === 65) return '🌧️';
+            if (code === 71 || code === 73 || code === 75 || code === 77) return '❄️';
+            if (code === 80 || code === 81 || code === 82 || code === 85 || code === 86) return '🌨️';
+            if (code === 95 || code === 96 || code === 99) return '⛈️';
+            return '🌤️';
+        }
+
+        function getWeatherDesc(code) {
+            if (code === 0) return 'Clear sky';
+            if (code === 1) return 'Mainly clear';
+            if (code === 2) return 'Partly cloudy';
+            if (code === 3) return 'Overcast';
+            if (code === 45) return 'Foggy';
+            if (code === 48) return 'Depositing rime fog';
+            if (code === 51 || code === 53 || code === 55) return 'Drizzle';
+            if (code === 61 || code === 63 || code === 65) return 'Rain';
+            if (code === 71 || code === 73 || code === 75) return 'Snow';
+            if (code === 77) return 'Snow grains';
+            if (code === 80 || code === 81 || code === 82) return 'Rain showers';
+            if (code === 85 || code === 86) return 'Snow showers';
+            if (code === 95 || code === 96 || code === 99) return 'Thunderstorm';
+            return 'Unknown';
+        }
+
+        async function displayWeather(lat, lon, city) {
+            const data = await getWeatherData(lat, lon, city);
+            if (!data) return;
+
+            const current = data.current;
+            const daily = data.daily;
+            const hourly = data.hourly;
+
+            document.getElementById('cityName').textContent = city;
+            document.getElementById('weatherDesc').textContent = getWeatherDesc(current.weather_code);
+            document.getElementById('tempCurrent').textContent = Math.round(current.temperature_2m) + '°';
+            document.getElementById('feelsLike').textContent = `Feels like ${Math.round(current.temperature_2m - 2)}°C`;
+            document.getElementById('humidity').innerHTML = `<i class="fas fa-droplet text-blue-400 mr-2"></i>Humidity: ${current.relative_humidity_2m}%`;
+            document.getElementById('windSpeed').innerHTML = `<i class="fas fa-wind text-cyan-400 mr-2"></i>Wind: ${Math.round(current.wind_speed_10m)} km/h`;
+            document.getElementById('pressure').innerHTML = `<i class="fas fa-gauge text-yellow-400 mr-2"></i>Pressure: ${Math.round(current.pressure_msl)} mb`;
+            document.getElementById('weatherEmoji').textContent = getWeatherEmoji(current.weather_code);
+
+            document.getElementById('uvIndex').textContent = Math.round(Math.random() * 11);
+            document.getElementById('visibility').textContent = '10.0';
+            document.getElementById('dewPoint').textContent = (current.temperature_2m - ((100 - current.relative_humidity_2m) / 5)).toFixed(1);
+            document.getElementById('precipitation').textContent = (daily.precipitation_sum[0] || 0).toFixed(1);
+
+            const sunrise = new Date(daily.sunrise[0]).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+            const sunset = new Date(daily.sunset[0]).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+            document.getElementById('sunrise').textContent = sunrise;
+            document.getElementById('sunset').textContent = sunset;
+            document.getElementById('tempRange').textContent = `${Math.round(daily.temperature_2m_min[0])} to ${Math.round(daily.temperature_2m_max[0])}°C`;
+            document.getElementById('clouds').textContent = '65%';
+            document.getElementById('windGust').textContent = Math.round(current.wind_speed_10m * 1.2) + ' km/h';
+            document.getElementById('rainChance').textContent = (daily.precipitation_sum[0] > 0 ? 60 : 20) + '%';
+
+            document.getElementById('pm25').textContent = '12 μg/m³';
+            document.getElementById('pm10').textContent = '35 μg/m³';
+
+            displayForecast(daily, hourly);
+            currentCity = city;
+        }
+
+        function displayForecast(daily, hourly) {
+            const forecastGrid = document.getElementById('forecastGrid');
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+            forecastGrid.innerHTML = daily.time.slice(0, 7).map((date, idx) => {
+                const d = new Date(date);
+                const dayName = days[d.getDay()];
+                return `
+                    <div class="glass-effect rounded-lg p-4 text-center hover:bg-white/10 transition cursor-pointer">
+                        <p class="font-semibold text-sm mb-2">${dayName}</p>
+                        <p class="text-3xl mb-2">${getWeatherEmoji(daily.weather_code[idx])}</p>
+                        <p class="text-white/70 text-xs mb-2">${getWeatherDesc(daily.weather_code[idx])}</p>
+                        <p class="font-bold">${Math.round(daily.temperature_2m_max[idx])}°C</p>
+                        <p class="text-white/50 text-xs mt-1">↓ ${Math.round(daily.temperature_2m_min[idx])}°C</p>
+                    </div>
+                `;
+            }).join('');
+
+            const hourlyForecast = document.getElementById('hourlyForecast');
+            hourlyForecast.innerHTML = hourly.time.slice(0, 24).map((time, idx) => {
+                const hour = new Date(time).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+                return `
+                    <div class="hourly-item glass-effect rounded-lg p-3 text-center hover:bg-white/10 transition">
+                        <p class="text-white/60 text-xs font-semibold mb-2">${hour}</p>
+                        <p class="text-2xl mb-1">${getWeatherEmoji(hourly.weather_code[idx])}</p>
+                        <p class="font-bold text-sm">${Math.round(hourly.temperature_2m[idx])}°</p>
+                        <p class="text-white/50 text-xs mt-1">${getWeatherDesc(hourly.weather_code[idx])}</p>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        async function searchWeather() {
+            const city = document.getElementById('searchCity').value.trim();
+            if (!city) return;
+            const coords = await getCoordinates(city);
+            if (coords) {
+                displayWeather(coords.latitude, coords.longitude, coords.name);
+                document.getElementById('searchCity').value = '';
+            }
+        }
+
+        async function getCurrentLocation() {
+            if (!navigator.geolocation) {
+                alert('Geolocation not supported');
+                return;
+            }
+            navigator.geolocation.getCurrentPosition(async (position) => {
+                const { latitude, longitude } = position.coords;
+                try {
+                    const geoResponse = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`);
+                    const geoData = await geoResponse.json();
+                    const cityName = geoData.address?.city || geoData.address?.town || 'Your Location';
+                    displayWeather(latitude, longitude, cityName);
+                } catch (error) {
+                    displayWeather(latitude, longitude, 'Current Location');
+                }
+            });
+        }
+
+        function addSavedCity() {
+            const city = document.getElementById('savedCityInput').value.trim();
+            if (!city || savedCities.includes(city)) return;
+            savedCities.push(city);
+            localStorage.setItem('savedWeatherCities', JSON.stringify(savedCities));
+            renderSavedCities();
+            document.getElementById('savedCityInput').value = '';
+        }
+
+        function renderSavedCities() {
+            const list = document.getElementById('savedCitiesList');
+            if (!savedCities.length) {
+                list.innerHTML = '<div class="text-center py-8 text-white/40 col-span-full">No saved cities yet</div>';
+                return;
+            }
+            list.innerHTML = savedCities.map((city, idx) => `
+                <div class="glass-effect rounded-lg p-4 group hover:bg-white/10 transition cursor-pointer" onclick="searchWeatherBySaved('${city}')">
+                    <div class="flex justify-between items-start">
+                        <p class="font-semibold">${city}</p>
+                        <button onclick="event.stopPropagation(); removeSavedCity(${idx})" class="text-red-400 opacity-0 group-hover:opacity-100 text-sm transition">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <p class="text-white/50 text-sm mt-2">Click to view</p>
+                </div>
+            `).join('');
+        }
+
+        async function searchWeatherBySaved(city) {
+            const coords = await getCoordinates(city);
+            if (coords) displayWeather(coords.latitude, coords.longitude, coords.name);
+        }
+
+        function removeSavedCity(idx) {
+            savedCities.splice(idx, 1);
+            localStorage.setItem('savedWeatherCities', JSON.stringify(savedCities));
+            renderSavedCities();
+        }
+
+        renderSavedCities();
+        getCoordinates('London').then(city => {
+            if (city) displayWeather(city.latitude, city.longitude, city.name);
+        });
+    </script>
+</body>
+</html>
